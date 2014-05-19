@@ -1,0 +1,18 @@
+extends layout
+
+block content
+	h1 Welcome
+		small Let's search for a Programming Language
+	form.form-inline.container-form(action="/")
+		input.search-term(type="text",placeholder="Search for a Language")
+		button.btn-primary.search-btn(type="submit",action=false) Search
+	#results Your search: 
+		hr
+		.result-display
+
+
+
+
+	script#results-template(type="x-handlebars-template")
+		.search-result
+			p {{result}} 
