@@ -7,25 +7,27 @@ $(document).on('ready',function(){
 	var resultRender = Handlebars.compile(resultListing);
 	
 	$('.container-form').on('click','.search-btn',function(){
-		// this.preventDefault();
+
 
 		$('.result-display').empty();
 
 		var searchForm = {
-			searchQuery:$('.search-term').val()
+			searchQuery:$('.search-term').val(),
+			results:"Hello"
 		}
 		console.log(searchForm);
 
-		$.post('/search',searchForm, function(data){
+		$.post('/search',searchForm, function(responseData){
 			$('.search-term').text('');
-			data = searchForm;
-			var result = data.searchQuery;
-			console.log(data.searchQuery)
-			console.log('ajax is working!' + data);
-			$('.result-display').append(result);
-			return result;
-
+		
+			// var resultName = data.searchQuery;
+			var results = {results : responseData? responseData :"Not Found, Please Search Again fool!" }
+			console.log(responseData)
+			$('.result-display').append(resultRender(results));
+			// console.log(descriptionSearch)
 		})
+
+
 		
 		return false;
 	})

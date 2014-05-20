@@ -11,8 +11,8 @@ app.use(bodyParser());
 app.get('/', function(req, res) {
 	res.render('index');
 });
-app.get('/search',searchController.searchRender);
-app.post('/search',searchController.searchRender);
+app.get('/search',searchController.searchData);
+app.post('/search',searchController.searchData);
 
 
 var server = app.listen(8864, function() {
