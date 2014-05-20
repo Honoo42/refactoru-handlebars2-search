@@ -16,13 +16,15 @@ $(document).on('ready',function(){
 			results:"Hello"
 		}
 		console.log(searchForm);
-
+		// sends the typed input to the server and than receives a response
+		// back once the server finishes its functions
 		$.post('/search',searchForm, function(responseData){
 			$('.search-term').text('');
 		
 			// var resultName = data.searchQuery;
-			var results = {results : responseData? responseData :"Not Found, Please Search Again fool!" }
+			var results = {results : responseData }
 			console.log(responseData)
+			// Handlebars call
 			$('.result-display').append(resultRender(results));
 			// console.log(descriptionSearch)
 		})
